@@ -13,3 +13,8 @@ test('it renders without crashing', () => {
     />
   );
 });
+
+it("matches snapshot", function () {
+  const { asFragment } = render(<Card />);
+  expect(asFragment()).toMatchSnapshot();
+});

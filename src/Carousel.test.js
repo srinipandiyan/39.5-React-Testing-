@@ -2,6 +2,19 @@ import { render, fireEvent } from "@testing-library/react";
 import Carousel from "./Carousel.js";
 import TEST_IMAGES from "./_testCommon.js";
 
+test('it renders without crashing', () => {
+  render(<Carousel
+      photos={TEST_IMAGES}
+      title='title-test'
+    />
+  );
+});
+
+it("matches snapshot", function () {
+  const { asFragment } = render(<Carousel />);
+  expect(asFragment()).toMatchSnapshot();
+});
+
 it("works when you click on the right arrow", function() {
   const { container } = render(
     <Carousel
@@ -9,6 +22,7 @@ it("works when you click on the right arrow", function() {
       title="images for testing"
     />
   );
+
   // expect the first image to show, but not the second
   expect(
     container.querySelector('img[alt="testing image 1"]')
