@@ -27,7 +27,7 @@ import Card from "./Card";
 
   //Decrements currCardIdx state by 1 and remains within range of photos array indices
   function goBackward() {
-    setCurrCardIdx((idx) => (total + idx - 1) % total);
+    setCurrCardIdx((idx) => (idx - 1 + total) % total);
   }
 
   return (
